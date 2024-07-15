@@ -1,19 +1,31 @@
-import { Link, Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
-
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Link, Stack, usePathname, useRouter, useSegments } from "expo-router";
+import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function NotFoundScreen() {
+  const router = useRouter();
+  const segments = useSegments();
+  const pathname = usePathname();
+  const routes = segments.map((segment) => `/${segment}`);
+
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen doesn't exist.</ThemedText>
+      <Stack.Screen options={{ title: "Oops!" }} />
+      <View style={styles.container}>
+        <Text>pathname: {pathname}</Text>
         <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
+          <Text>Go to home screen!</Text>
         </Link>
-      </ThemedView>
+        <FlatList
+          data={routes}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <View style={styles.routeItem}>
+              <Text style={styles.routeText}>{item}</Text>
+              <Button title="Go" onPress={() => router.push(item)} />
+            </View>
+          )}
+        />
+      </View>
     </>
   );
 }
@@ -21,12 +33,25 @@ export default function NotFoundScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
   link: {
     marginTop: 15,
     paddingVertical: 15,
+  },
+  routeItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 5,
+    padding: 10,
+    borderColor: "#ddd",
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  routeText: {
+    fontSize: 16,
   },
 });

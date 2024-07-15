@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "checkDetector-app",
-    "slug": "checkDetector-app",
+    "name": "docu-match-app",
+    "slug": "docu-match-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -13,21 +13,26 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cl.documatch"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      },
+      "package": "com.cl.documatch"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "com.cl.documatch",
+          "microphonePermission": "com.cl.documatch",
+          "recordAudioAndroid": true
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
