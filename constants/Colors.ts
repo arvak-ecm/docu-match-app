@@ -27,6 +27,11 @@ export const Colors = {
     icon: "#687076",
     tabIconDefault: "#687076",
     tabIconSelected: tintColorLight,
+    gradient: {
+      labelColor: "#4F0A7D",
+      vertical: ["hsla(254, 74%, 65%, 1)", "hsla(276, 91%, 79%, 1)"],
+      horizontal: ["hsla(254, 74%, 65%, 1)", "hsla(276, 91%, 79%, 1)"],
+    },
   },
   dark: {
     text: "#ECEDEE",
@@ -35,5 +40,10 @@ export const Colors = {
     icon: "#9BA1A6",
     tabIconDefault: "#9BA1A6",
     tabIconSelected: tintColorDark,
+    gradient: {
+      labelColor: "#4F0A7D",
+      vertical: ["hsla(254, 74%, 65%, 1)", "hsla(276, 91%, 79%, 1)"],
+      horizontal: ["hsla(254, 74%, 65%, 1)", "hsla(276, 91%, 79%, 1)"],
+    },
   },
 };

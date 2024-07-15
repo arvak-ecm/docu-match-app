@@ -1,6 +1,8 @@
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import { PaperProvider } from "react-native-paper";
+import { AppProvider } from "../hooks/useContextApp";
 
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
@@ -19,9 +21,14 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(check-cl)" options={{ headerShown: false }} />
-    </Stack>
+    <AppProvider>
+      <PaperProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(check-cl)" options={{ headerShown: false }} />
+          <Stack.Screen name="(config)" options={{ headerShown: false }} />
+        </Stack>
+      </PaperProvider>
+    </AppProvider>
   );
 }
