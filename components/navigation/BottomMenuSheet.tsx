@@ -2,28 +2,30 @@ import { BottomMenuSheetProps } from "@/types/BottomMenuSheetProps";
 import { Colors } from "constants/Colors";
 import { router } from "expo-router";
 import React, { FC } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button, Icon } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Button, Icon, useTheme } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import ThemeLinearGradient from "../ThemeLinearGradient";
 
 const BottomMenuSheet: FC<{ menu: BottomMenuSheetProps[] }> = (props) => {
+  const theme = useTheme();
   const { bottom } = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingBottom: bottom }]}>
+    <ThemeLinearGradient type="vertical" style={[styles.container, { paddingBottom: bottom }]} colors={[]}>
       {props.menu.map((item, index) => (
         <Button
           key={index}
-          style={[styles.btn_base]}
+          style={[styles.btn_base, { backgroundColor: theme.colors.primary }]}
           onPress={() => router.navigate(item.pathName)}
           icon={({ size, color }) => <Icon source={item.icon.name} size={item.sizeIcon || size} color={color} />}
-          mode="outlined"
-          labelStyle={styles.btnLabel}
+          mode="elevated"
+          labelStyle={[styles.btnLabel, { color: theme.colors.onPrimary }]}
         >
           {item.label}
         </Button>
       ))}
-    </View>
+    </ThemeLinearGradient>
   );
 };
 
@@ -34,16 +36,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     width: "100%",
-    backgroundColor: "#000",
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     padding: 26,
     gap: 14,
   },
   btnLabel: {
-    fontSize: 22,
-    paddingVertical: 8,
+    fontSize: 20,
+    paddingVertical: 11,
     marginBottom: 3,
+    color: "#000",
   },
   btn_base: {
     backgroundColor: "#fff",

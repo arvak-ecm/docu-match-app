@@ -14,13 +14,18 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.cl.documatch"
+      "bundleIdentifier": "com.cl.documatch",
+			"infoPlist": {
+        "UIViewControllerBasedStatusBarAppearance":"YES"
+      }
+
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+			"UIViewControllerBasedStatusBarAppearance": "YES",
       "package": "com.cl.documatch"
     },
     "plugins": [

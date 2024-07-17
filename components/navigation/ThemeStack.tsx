@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/Colors";
 import { useAppSettings } from "@/hooks/useContextApp";
 import { Stack } from "expo-router";
 import React from "react";
@@ -7,15 +6,15 @@ import ThemeLinearGradient from "../ThemeLinearGradient";
 import ButtonHeaderBack from "./ButtonHeaderBack";
 
 const ThemeStack = ({ stacks }: { stacks: { name: string; title: string }[] }) => {
-  const { theme } = useAppSettings();
+  const { paperTheme } = useAppSettings();
   return (
     <Stack
       screenOptions={{
-        headerBackground: () => <ThemeLinearGradient type="vertical" />,
+        headerBackground: () => <ThemeLinearGradient type="vertical" colors={[]} />,
         headerShown: true,
         headerBackTitle: "Atrás", // Para iOS
         headerBackTitleVisible: true, // Para iOS
-        headerTintColor: Colors.light.gradient.labelColor,
+        headerTintColor: paperTheme.colors.text,
         headerLeft: () => <ButtonHeaderBack />,
       }}
     >

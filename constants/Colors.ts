@@ -1,7 +1,99 @@
 const tintColorLight = "#0a7ea4";
 const tintColorDark = "#fff";
+const tintColorWhite = "rgb(255, 255, 255)";
+const tintColorBlack = "rgb(0, 0, 0)";
 
-export const Colors = {
+const Light = {
+  primary: "rgb(6, 132, 188)",
+  onPrimary: tintColorWhite,
+  primaryContainer: "rgb(230, 243, 255)",
+  onPrimaryContainer: "rgb(0, 58, 77)",
+  secondary: "rgb(64, 224, 208)",
+  onSecondary: tintColorWhite,
+  secondaryContainer: "rgb(200, 250, 245)",
+  onSecondaryContainer: "rgb(0, 68, 62)",
+  tertiary: "rgb(135, 206, 235)",
+  onTertiary: "rgb(255, 255, 255)",
+  tertiaryContainer: "rgb(210, 235, 245)",
+  onTertiaryContainer: "rgb(0, 61, 77)",
+  error: "rgb(255, 99, 71)",
+  onError: tintColorWhite,
+  errorContainer: "rgb(255, 220, 216)",
+  onErrorContainer: "rgb(65, 0, 2)",
+  background: "rgb(240, 248, 255)",
+  onBackground: "rgb(30, 30, 30)",
+  surface: tintColorWhite,
+  onSurface: "rgb(30, 30, 30)",
+  surfaceVariant: "rgb(230, 243, 255)",
+  onSurfaceVariant: "rgb(100, 100, 100)",
+  outline: "rgb(189, 189, 189)",
+  outlineVariant: "rgb(220, 220, 220)",
+  shadow: tintColorBlack,
+  scrim: tintColorBlack,
+  inverseSurface: "rgb(50, 50, 50)",
+  inverseOnSurface: "rgb(245, 245, 245)",
+  inversePrimary: "rgb(135, 206, 235)",
+  elevation: {
+    level0: "transparent",
+    level1: "rgb(245, 250, 255)",
+    level2: "rgb(240, 248, 255)",
+    level3: "rgb(235, 246, 255)",
+    level4: "rgb(230, 244, 255)",
+    level5: "rgb(225, 242, 255)",
+  },
+  surfaceDisabled: "rgba(30, 30, 30, 0.12)",
+  onSurfaceDisabled: "rgba(30, 30, 30, 0.38)",
+  backdrop: "rgba(50, 47, 55, 0.4)",
+  linearGradient: ["rgb(112, 219, 255)", "rgb(204, 242, 255)"],
+  text: "rgb(0, 58, 77)",
+};
+
+const Dark = {
+  primary: "rgb(0, 58, 77)",
+  onPrimary: "rgb(230, 243, 255)",
+  primaryContainer: "rgb(0, 79, 104)",
+  onPrimaryContainer: "rgb(178, 235, 255)",
+  secondary: "rgb(64, 224, 208)",
+  onSecondary: "rgb(0, 68, 62)",
+  secondaryContainer: "rgb(0, 97, 88)",
+  onSecondaryContainer: "rgb(151, 248, 235)",
+  tertiary: "rgb(135, 206, 235)",
+  onTertiary: "rgb(0, 61, 77)",
+  tertiaryContainer: "rgb(0, 85, 107)",
+  onTertiaryContainer: "rgb(190, 231, 255)",
+  error: "rgb(255, 150, 130)",
+  onError: "rgb(77, 0, 0)",
+  errorContainer: "rgb(140, 0, 0)",
+  onErrorContainer: "rgb(255, 220, 216)",
+  background: "rgb(18, 18, 18)",
+  onBackground: "rgb(230, 230, 230)",
+  surface: "rgb(30, 30, 30)",
+  onSurface: "rgb(230, 230, 230)",
+  surfaceVariant: "rgb(40, 40, 40)",
+  onSurfaceVariant: "rgb(200, 200, 200)",
+  outline: "rgb(135, 135, 135)",
+  outlineVariant: "rgb(80, 80, 80)",
+  shadow: tintColorBlack,
+  scrim: tintColorBlack,
+  inverseSurface: "rgb(230, 230, 230)",
+  inverseOnSurface: "rgb(50, 50, 50)",
+  inversePrimary: "rgb(0, 114, 153)",
+  elevation: {
+    level0: "transparent",
+    level1: "rgb(35, 35, 35)",
+    level2: "rgb(40, 40, 40)",
+    level3: "rgb(45, 45, 45)",
+    level4: "rgb(50, 50, 50)",
+    level5: "rgb(55, 55, 55)",
+  },
+  surfaceDisabled: "rgba(230, 230, 230, 0.12)",
+  onSurfaceDisabled: "rgba(230, 230, 230, 0.38)",
+  backdrop: "rgba(50, 47, 55, 0.4)",
+  linearGradient: ["rgb(0, 69, 92)", "rgb(0, 126, 168)"],
+  text: "rgb(230, 243, 255)",
+};
+
+const Colors = {
   intro: {
     primary: "#20AB6E",
     lime: "#D7FFD4",
@@ -47,3 +139,5 @@ export const Colors = {
     },
   },
 };
+
+export { Colors, Dark, Light };

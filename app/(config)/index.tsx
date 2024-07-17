@@ -1,46 +1,73 @@
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
+import { Avatar, Card, MD3Colors, useTheme } from "react-native-paper";
+import { useAppSettings } from "../../hooks/useContextApp";
 
-export default function index() {
-  const [checked, setChecked] = useState(false);
+export default function ConfigPage() {
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const theme = useTheme();
+  const { themeApp, toggleTheme, paperTheme } = useAppSettings();
+
+  useEffect(() => {
+    if (themeApp === "light") {
+      setIsSwitchOn(false);
+    } else if (themeApp === "dark") {
+      setIsSwitchOn(true);
+    }
+  }, [themeApp]);
+
+  const onToggleSwitch = () => {
+    const theme = !isSwitchOn ? "light" : "dark";
+    toggleTheme(theme);
+    setIsSwitchOn(!isSwitchOn);
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={<TabBarIcon size={210} name="code-slash" />}
     >
-      <ThemedView>
-        <ThemedText type="title">Configuración</ThemedText>
-      </ThemedView>
-
-      <ThemedView>
-        <Pressable
-          style={[styles.checkboxBase, checked && styles.checkboxChecked]}
-          onPress={() => setChecked(!checked)}
-        >
-          {checked && <Ionicons name="checkmark" size={24} color="white" />}
-        </Pressable>
-      </ThemedView>
+      <Pressable onPress={onToggleSwitch}>
+        <Card elevation={2} style={{ backgroundColor: paperTheme.colors.secondaryContainer }}>
+          <Card.Title
+            style={styles.card}
+            title="Tema de la aplicación"
+            subtitle={isSwitchOn ? "Modo oscuro" : "Modo claro"}
+            left={(props) => (
+              <Avatar.Icon
+                {...props}
+                icon={isSwitchOn ? "moon-waxing-crescent" : "white-balance-sunny"}
+                style={{ backgroundColor: paperTheme.colors.secondary }}
+              />
+            )}
+          />
+        </Card>
+      </Pressable>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  checkboxBase: {
-    width: 24,
-    height: 24,
-    justifyContent: "center",
+  containerThemed: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 16,
     alignItems: "center",
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: "coral",
-    backgroundColor: "transparent",
+  },
+  card: {
+    borderRadius: 8,
+    borderColor: MD3Colors.primary20,
+    elevation: 2,
   },
   checkboxChecked: {
     backgroundColor: "coral",
+  },
+  themedActivated: {
+    color: MD3Colors.primary20,
+  },
+  themedDeactivated: {
+    color: MD3Colors.primary80,
   },
 });

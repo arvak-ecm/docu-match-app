@@ -65,10 +65,7 @@ const AnimatedIntro = () => {
       color: interpolateColor(
         currentX.value,
         [half, half + labelWidth.value / 2],
-        [
-          content[newColorIndex.value].fontColor,
-          content[currentIndex.value].fontColor,
-        ],
+        [content[newColorIndex.value].fontColor, content[currentIndex.value].fontColor],
         "RGB",
       ),
       transform: [
@@ -88,10 +85,7 @@ const AnimatedIntro = () => {
       backgroundColor: interpolateColor(
         currentX.value,
         [half, half + labelWidth.value / 2],
-        [
-          content[newColorIndex.value].fontColor,
-          content[currentIndex.value].fontColor,
-        ],
+        [content[newColorIndex.value].fontColor, content[currentIndex.value].fontColor],
         "RGB",
       ),
       transform: [{ translateX: currentX.value }],
@@ -124,11 +118,7 @@ const AnimatedIntro = () => {
     opacity: interpolate(1, [1, 0], [1, 0, 0, 0, 0, 0, 0]),
     transform: [
       {
-        translateX: interpolate(
-          1,
-          [1, 0],
-          [0, -width * 2, -width, -width, -width, -width, -width],
-        ),
+        translateX: interpolate(1, [1, 0], [0, -width * 2, -width, -width, -width, -width, -width]),
       },
     ],
   }));
